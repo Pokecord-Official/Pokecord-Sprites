@@ -1,6 +1,7 @@
 const process = require('process')
 const githubAuth = process.argv[2]
 if (!githubAuth) throw ('Unauthorized')
+const fs = require('fs')
 const path = require('path')
 const axios = require('axios')
 const dexToPokemon = require('./dexToPokemon.json')
