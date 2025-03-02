@@ -15,6 +15,12 @@ jobs:
             -H "Authorization: token ${{ secrets.PAT }}" \
             https://raw.githubusercontent.com/Pokecord-Official/Pokecord-Module/master/src/dexToPokemon.json \
             -o dexToPokemon.json
+      - name: Pull sharedConfig
+        run: |
+            curl -X GET -H "Accept: application/vnd.github.raw+json" \
+            -H "Authorization: token ${{ secrets.PAT }}" \
+            https://raw.githubusercontent.com/Pokecord-Official/Pokecord-Module/master/sharedConfig.json \
+            -o sharedConfig.json
       - name: Install Dependencies
         run: npm install
       - name: Run script

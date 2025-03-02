@@ -5,7 +5,7 @@ const fs = require('fs')
 const path = require('path')
 const axios = require('axios')
 const dexToPokemon = require('./dexToPokemon.json')
-const config = require('./config.json')
+const config = require('./sharedConfig.json')
 const spriteExceptions = async () => {
     try {
         console.log(`⏳ Creating Sprite Exceptions...`)
