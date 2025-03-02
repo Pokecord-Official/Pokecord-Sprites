@@ -19,6 +19,8 @@ jobs:
         run: npm install
       - name: Run script
         run: node index.js ${{ secrets.PAT }}
+      - name: Debug file existence
+        run: ls -la
       - name: Commit Changes
         run: |
             git config --global user.name "github-actions[bot]"
