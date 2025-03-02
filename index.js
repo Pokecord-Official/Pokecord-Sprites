@@ -1,5 +1,5 @@
 const process = require('process')
-const githubAuth = process.argv[2]
+const githubAuth = process.env.PAT
 if (!githubAuth) throw ('Unauthorized')
 const fs = require('fs')
 const path = require('path')
