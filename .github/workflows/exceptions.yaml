@@ -1,0 +1,28 @@
+name: Exceptions
+on:
+  push:
+    branches:
+      - master
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Pull dexToPokemon
+        run: |
+            curl -X GET -H "Accept: application/vnd.github.raw+json" \
+            -H "Authorization: token ${{ secrets.PAT }}" \
+            https://raw.githubusercontent.com/Pokecord-Official/Pokecord-Module/master/src/dexToPokemon.json \
+            -o dexToPokemon.json
+      - name: Install Dependencies
+        run: npm install
+      - name: Run script
+        run: node index.js ${{ secrets.PAT }}
+      - name: Commit Changes
+        run: |
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add -f spriteExceptions.json
+            git commit -m "Auto Parsed Sprite Exceptions" || echo "No changes to commit"
+            git push
