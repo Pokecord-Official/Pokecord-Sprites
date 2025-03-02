@@ -36,3 +36,10 @@ jobs:
             git add -f spriteExceptions.json
             git commit -m "Auto Parsed Sprite Exceptions" || echo "No changes to commit"
             git push
+      - name: Send Dispatch Event
+        run: |
+          curl -X POST -H "Accept: application/vnd.github.everest-preview+json" \
+          -H "Authorization: token ${{ secrets.PAT }}" \
+          --data '{"event_type": "parse_data"}' \
+          https://api.github.com/repos/Pokecord-Official/Pokecord-Module/dispatches
+
